@@ -1,41 +1,62 @@
 <div class="input-wrapper">
 
-  @if (variant() === 'search') {
-    <i class="ri-search-line input-icon"></i>
-  }
+  @if (variant() === 'floating') {
 
-  <input
-    [type]="
-      variant() === 'password'
-        ? (showPassword() ? 'text' : 'password')
-        : 'text'
-    "
-    [class]="classes()"
-    [placeholder]="placeholder()"
-    [disabled]="disabled()" />
+    <div class="floating-wrapper">
 
-  @if (state() === 'success') {
-    <i class="ri-check-line status-icon success-icon"></i>
-  }
+      <input
+        class="ronin-input floating"
+        [class.success]="state() === 'success'"
+        [class.error]="state() === 'error'"
+        [placeholder]="' '"
+        [disabled]="disabled()" />
 
-  @if (state() === 'error') {
-    <i class="ri-error-warning-line status-icon error-icon"></i>
-  }
+      <label>
+        {{ label() }}
+      </label>
 
-  @if (variant() === 'password') {
+    </div>
 
-    <button
-      class="input-action"
-      type="button"
-      (click)="togglePassword()">
+  } @else {
 
-      @if (showPassword()) {
-        <i class="ri-eye-off-line"></i>
-      } @else {
-        <i class="ri-eye-line"></i>
-      }
+    @if (variant() === 'search') {
+      <i class="ri-search-line input-icon"></i>
+    }
 
-    </button>
+    <input
+      [type]="
+        variant() === 'password'
+          ? (showPassword() ? 'text' : 'password')
+          : 'text'
+      "
+      [class]="classes()"
+      [placeholder]="placeholder()"
+      [disabled]="disabled()" />
+
+    @if (state() === 'success') {
+      <i class="ri-check-line status-icon success-icon"></i>
+    }
+
+    @if (state() === 'error') {
+      <i class="ri-error-warning-line status-icon error-icon"></i>
+    }
+
+    @if (variant() === 'password') {
+
+      <button
+        class="input-action"
+        type="button"
+        (click)="togglePassword()">
+
+        @if (showPassword()) {
+          <i class="ri-eye-off-line"></i>
+        } @else {
+          <i class="ri-eye-line"></i>
+        }
+
+      </button>
+
+    }
 
   }
 

@@ -124,9 +124,13 @@
   cursor: not-allowed;
 }
 
+/* PASSWORD */
+
 .password {
   padding-right: 3rem;
 }
+
+/* ACTION */
 
 .input-action {
   position: absolute;
@@ -153,6 +157,8 @@
 
   transition: var(--transition);
 }
+
+/* SUCCESS AND ERROR */
 
 .input-action:hover {
   color: var(--color-primary);
@@ -204,4 +210,44 @@
   color: var(--color-danger);
   filter:
     drop-shadow(0 0 4px rgba(239, 68, 68, .5));
+}
+
+/* FLOATING */
+
+.floating-wrapper {
+  position: relative;
+
+  width: 320px;
+}
+
+.floating {
+  width: 100%;
+}
+
+.floating-wrapper label {
+  position: absolute;
+
+  left: 1rem;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background: var(--color-bg);
+
+  padding: 0 .4rem;
+
+  color: var(--color-text-muted);
+
+  transition: all .2s ease;
+
+  pointer-events: none;
+}
+
+.floating:focus + label,
+.floating:not(:placeholder-shown) + label {
+  top: 0;
+
+  font-size: .8rem;
+
+  color: var(--color-primary);
 }

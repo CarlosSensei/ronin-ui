@@ -47,4 +47,9 @@ export class Inputs {
     placeholder="Email invalid" />
   `;
 
+  readonly floatingCode = `
+  <ui-input
+    variant="floating"
+    label="Email" />
+  `;
 }

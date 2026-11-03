@@ -4,7 +4,8 @@ export type InputVariant =
   | 'default'
   | 'filled'
   | 'search'
-  | 'password';
+  | 'password'
+  | 'floating';
 
 export type InputState =
   | 'default'
@@ -21,6 +22,7 @@ export class InputComponent {
   readonly placeholder = input('Enter text...');
   readonly variant = input<InputVariant>('default');
   readonly disabled = input(false);
+  readonly label = input('');
   readonly state = input<InputState>('default');
   readonly showPassword = signal(false);
   readonly classes = computed(() =>
