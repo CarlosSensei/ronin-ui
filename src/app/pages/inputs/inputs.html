@@ -1,0 +1,89 @@
+<h1>Inputs</h1>
+
+<div class="inputs-grid">
+
+  <section>
+
+    <h2>Default</h2>
+
+    <ui-code-example [code]="defaultCode">
+      <ui-input />
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Filled</h2>
+
+    <ui-code-example [code]="filledCode">
+      <ui-input variant="filled" />
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Disabled</h2>
+
+    <ui-code-example [code]="disabledCode">
+      <ui-input [disabled]="true" />
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Search</h2>
+
+    <ui-code-example [code]="searchCode">
+      <ui-input
+        variant="search"
+        placeholder="Search components..." />
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Password</h2>
+
+    <ui-code-example [code]="passwordCode">
+
+      <ui-input
+        variant="password"
+        placeholder="Password" />
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Success</h2>
+
+    <ui-code-example [code]="successCode">
+
+      <ui-input
+        state="success"
+        placeholder="Email validated" />
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Error</h2>
+
+    <ui-code-example [code]="errorCode">
+
+      <ui-input
+        state="error"
+        placeholder="Email invalid" />
+
+    </ui-code-example>
+
+  </section>
+
+</div>

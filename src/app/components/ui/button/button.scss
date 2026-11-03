@@ -1,0 +1,429 @@
+/* CLASE PROPIA */
+
+.ronin-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border: none;
+  cursor: pointer;
+
+  border-radius: var(--radius-md);
+
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* TAMAÑOS */
+
+.sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+}
+
+.md {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.lg {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* PRIMARY */
+
+.primary {
+  background: var(--color-bg-contrast);
+  color: var(--color-text-contrast);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+/* SECONDARY */
+
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+}
+
+/* OUTLINE */
+
+.outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.outline:hover:not(:disabled) {
+  background: rgba(255, 145, 0, 0.1);
+}
+
+/* GHOST */
+
+.ghost {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--color-surface-hover);
+}
+
+/* DANGER */
+
+.danger {
+  background: var(--color-danger);
+  color: white;
+}
+
+.danger:hover:not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: 0px 0px 6px var(--color-danger);
+  scale: 1.05;
+}
+
+/* OTROS */
+
+.full-width {
+  width: 100%;
+}
+
+.rounded {
+  border-radius: 999px;
+}
+
+.loading {
+  pointer-events: none;
+}
+
+.ronin-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* SPINNER */
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  border-top-color: white;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* CLOSE BUTTON */
+
+.close {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--color-text-muted);
+
+  border-radius: 50%;
+}
+
+.close i {
+  transition: all .3s ease;
+}
+
+.close:hover:not(:disabled) {
+  background: rgba(221, 250, 217, 0.15);
+
+  color: var(--color-success);
+  font-size: 1.2rem;
+
+  box-shadow:
+    0 0 12px rgba(88, 239, 68, 0.3);
+
+  transform:
+    rotate(90deg)
+    scale(1.05);
+}
+
+/* CLOSE MORPH */
+
+.close-morph {
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--color-text-muted);
+
+  border-radius: 50%;
+}
+
+.close-morph i {
+  transition: all .3s ease;
+}
+
+.close-morph:hover:not(:disabled) {
+  background: var(--color-danger);
+
+  color: white;
+  font-size: 1.2rem;
+
+  box-shadow:
+    0 0 20px rgba(239, 68, 68, .5);
+
+  transform: 
+    scale(1.15)
+    rotate(180deg);
+}
+
+/* ICON BUTTON */
+
+.icon {
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 50%;
+
+  color: var(--color-text);
+
+  font-size: 1.1rem;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.icon i {
+  transition: all 0.2s ease;
+  color: inherit;
+}
+
+.icon:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.icon-primary:hover {
+  border-color: var(--color-primary);
+
+  box-shadow:
+    0 0 12px rgba(255, 145, 0, .4);
+
+  color: var(--color-primary);
+
+}
+
+.icon-danger:hover {
+  border-color: var(--color-danger);
+
+  box-shadow:
+    0 0 12px rgba(239, 68, 68, .4);
+
+  color: var(--color-danger);
+
+}
+
+.icon-success:hover {
+  border-color: var(--color-success);
+
+  box-shadow:
+    0 0 12px rgba(34, 197, 94, .4);
+
+  color: var(--color-success);
+}
+
+/* ANIMATED BUTTON */
+
+.animated-pulse {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+
+  color: white;
+
+  border: 1px solid rgba(251, 255, 0, 0.438);
+}
+
+.animated-pulse .animated-border {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  border: 2px solid var(--color-primary);
+
+  animation: pulseBorder 2s infinite;
+}
+
+.animated-pulse:hover {
+  box-shadow:
+    0 0 20px rgba(255, 238, 0, 0.3);
+}
+
+@keyframes pulseBorder {
+
+  0% {
+    opacity: .3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: .3;
+    transform: scale(1);
+  }
+
+}
+
+.animated-neon {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+
+  color: white;
+}
+
+.animated-neon::before {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  left: -100%;
+
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(251, 255, 0, 0.8),
+    transparent
+  );
+
+  animation: neonFlow 2.5s linear infinite;
+}
+
+.animated-neon:hover {
+  box-shadow:
+    0 0 20px rgba(255, 238, 0, 0.3);
+}
+
+@keyframes neonFlow {
+
+  from {
+    left: -100%;
+  }
+
+  to {
+    left: 100%;
+  }
+
+}
+
+.animated-energy {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--color-surface);
+
+  color: white;
+}
+
+.animated-energy::before {
+  content: '';
+
+  position: absolute;
+
+  inset: -200%;
+
+  border-radius: inherit;
+
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--color-primary),
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+
+  animation: energySpin 3s linear infinite;
+}
+
+.animated-energy::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 2px;
+
+  background: var(--color-surface);
+
+  border-radius: inherit;
+}
+
+.animated-energy .button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-energy:hover {
+  box-shadow:
+    0 0 30px rgba(255, 238, 0, 0.3);
+}
+
+@keyframes energySpin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}

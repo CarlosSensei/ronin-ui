@@ -1,0 +1,42 @@
+<div class="input-wrapper">
+
+  @if (variant() === 'search') {
+    <i class="ri-search-line input-icon"></i>
+  }
+
+  <input
+    [type]="
+      variant() === 'password'
+        ? (showPassword() ? 'text' : 'password')
+        : 'text'
+    "
+    [class]="classes()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()" />
+
+  @if (state() === 'success') {
+    <i class="ri-check-line status-icon success-icon"></i>
+  }
+
+  @if (state() === 'error') {
+    <i class="ri-error-warning-line status-icon error-icon"></i>
+  }
+
+  @if (variant() === 'password') {
+
+    <button
+      class="input-action"
+      type="button"
+      (click)="togglePassword()">
+
+      @if (showPassword()) {
+        <i class="ri-eye-off-line"></i>
+      } @else {
+        <i class="ri-eye-line"></i>
+      }
+
+    </button>
+
+  }
+
+</div>

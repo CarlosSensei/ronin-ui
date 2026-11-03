@@ -1,0 +1,21 @@
+<button
+  [class]="classes()"
+  [disabled]="disabled() || loading()">
+
+  @if (loading()) {
+    <span class="spinner"></span>
+  }
+
+  @if (
+  variant() === 'animated-pulse' ||
+  variant() === 'animated-neon' ||
+  variant() === 'animated-energy'
+  ) {
+    <span class="animated-border"></span>
+  }
+
+  <span class="button-content">
+    <ng-content />
+  </span>
+
+</button>

@@ -1,0 +1,190 @@
+<h1>Buttons</h1>
+
+<div class="container">
+
+  <section>
+    <h2>Sizes</h2>
+
+    <ui-code-example [code]="sizesCode">
+
+      <div class="button-grid">
+        <ui-button size="sm">
+          Small
+        </ui-button>
+
+        <ui-button size="md">
+          Medium
+        </ui-button>
+
+        <ui-button size="lg">
+          Large
+        </ui-button>
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+    <h2>Variants</h2>
+
+    <ui-code-example [code]="variantsCode">
+
+      <div class="button-grid">
+        <ui-button variant="primary">Primary</ui-button>
+        <ui-button variant="secondary">Secondary</ui-button>
+        <ui-button variant="outline">Outline</ui-button>
+        <ui-button variant="ghost">Ghost</ui-button>
+        <ui-button variant="danger">Danger</ui-button>
+
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+    <h2>Rounded</h2>
+
+    <ui-code-example [code]="roundedCode">
+
+      <div class="button-grid">
+        <ui-button [rounded]="true">
+          Rounded
+        </ui-button>
+
+        <ui-button
+          variant="outline"
+          [rounded]="true">
+          Pill Button
+        </ui-button>
+      </div>
+
+    </ui-code-example>
+  </section>
+
+  <section>
+    <h2>Loading</h2>
+
+    <ui-code-example [code]="loadingCode">
+
+      <div class="button-grid">
+        <ui-button
+          variant="primary"
+          [loading]="true">
+          Saving...
+        </ui-button>
+
+        <ui-button
+          variant="danger"
+          [loading]="true">
+          Deleting...
+        </ui-button>
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+    <h2>Full Width</h2>
+
+    <ui-code-example [code]="fullWidthCode">
+
+      <div class="full-width-example">
+        <ui-button
+          variant="primary"
+          [fullWidth]="true">
+          Continue
+        </ui-button>
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+    <h2>Close Button</h2>
+
+    <ui-code-example [code]="closeCode">
+
+      <div class="button-grid">
+
+        <ui-button variant="close">
+          <i class="ri-close-line"></i>
+        </ui-button>
+
+        <ui-button variant="close-morph">
+          <i class="ri-close-line"></i>
+        </ui-button>
+
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+    <h2>Icon Button</h2>
+
+    <ui-code-example [code]="iconCode">
+
+      <div class="button-grid">
+
+      <ui-button
+        variant="icon"
+        colorScheme="primary">
+        <i class="ri-settings-3-line"></i>
+      </ui-button>
+
+      <ui-button
+        variant="icon"
+        colorScheme="danger">
+        <i class="ri-heart-line"></i>
+      </ui-button>
+
+      <ui-button
+        variant="icon"
+        colorScheme="success">
+        <i class="ri-notification-3-line"></i>
+      </ui-button>
+
+      <ui-button
+        variant="icon"
+        colorScheme="primary">
+        <i class="ri-shopping-cart-line"></i>
+      </ui-button>
+
+      </div>
+
+
+    </ui-code-example>
+  </section>
+
+  <section>
+
+    <h2>Animated Border Buttons</h2>
+
+    <ui-code-example [code]="animatedCode">
+
+      <div class="button-grid">
+
+        <ui-button variant="animated-pulse">
+          Pulse Border
+        </ui-button>
+
+        <ui-button variant="animated-neon">
+          Neon Flow
+        </ui-button>
+
+        <ui-button variant="animated-energy">
+          Energy Ring
+        </ui-button>
+
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+</div>
