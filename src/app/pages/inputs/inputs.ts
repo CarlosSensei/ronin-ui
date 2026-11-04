@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { InputComponent } from '../../components/ui/input/input';
+import { InputComponent } from '../../components/ui/inputs/input/input';
 import { CodeExampleComponent } from '../../components/docs/code-example/code-example';
+import { OtpInputComponent } from '../../components/ui/inputs/otp-input/otp-input';
 
 @Component({
-  imports: [InputComponent, CodeExampleComponent],
+  imports: [InputComponent, CodeExampleComponent, OtpInputComponent],
   selector: 'app-inputs',
   standalone: true,
   styleUrl: './inputs.scss',
@@ -51,5 +52,9 @@ export class Inputs {
   <ui-input
     variant="floating"
     label="Email" />
+  `;
+
+  readonly otpCode = `
+  <ui-otp-input />
   `;
 }

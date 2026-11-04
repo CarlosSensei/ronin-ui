@@ -8,7 +8,9 @@
 
   background: var(--color-surface);
 
-  overflow: hidden;
+  position: relative;
+
+  overflow: visible;
 
   box-shadow: var(--shadow-sm);
 }
@@ -16,6 +18,7 @@
 .preview {
   padding: 2rem;
   height: 80%;
+  overflow: visible
 }
 
 .actions {

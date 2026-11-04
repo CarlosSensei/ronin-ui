@@ -1,0 +1,17 @@
+<label
+  class="checkbox"
+  (click)="toggle()">
+
+  <div [class]="classes()">
+
+    @if (checked()) {
+      <i class="ri-check-line"></i>
+    }
+
+  </div>
+
+  <span>
+    {{ label() }}
+  </span>
+
+</label>

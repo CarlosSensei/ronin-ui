@@ -1,0 +1,162 @@
+<h1>Forms</h1>
+
+<div class="forms-grid">
+
+  <section>
+
+    <h2>Checkbox</h2>
+
+    <ui-code-example
+      [code]="checkboxCode">
+
+      <ui-checkbox
+        label="Accept terms">
+      </ui-checkbox>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Radio Group</h2>
+
+    <ui-code-example
+      [code]="radioCode">
+
+      <ui-radio-group
+        [options]="[
+          'Angular',
+          'React',
+          'Vue'
+        ]">
+      </ui-radio-group>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Toggle Switch</h2>
+
+    <ui-code-example [code]="toggleCode">
+
+      <ui-toggle
+        label="Enable feature">
+      </ui-toggle>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Theme Toggle</h2>
+
+    <ui-code-example [code]="themeCode">
+
+      <div class="toggle-grid">
+
+        <ui-toggle
+          variant="theme"
+          label="Dark Mode">
+        </ui-toggle>
+
+        <ui-toggle
+          variant="theme-premium"
+          label="Theme">
+        </ui-toggle>
+        
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Notification Toggle</h2>
+
+    <ui-code-example [code]="notificationCode">
+
+      <ui-toggle
+        variant="notification"
+        label="Notifications">
+      </ui-toggle>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Segmented Toggle</h2>
+
+    <ui-code-example [code]="segmentedCode">
+
+      <ui-segmented-toggle
+        [options]="[
+          'Monthly',
+          'Yearly'
+        ]">
+      </ui-segmented-toggle>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Range Slider</h2>
+
+    <ui-code-example
+      [code]="sliderCode">
+
+      <ui-range-slider />
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Select</h2>
+
+    <ui-code-example [code]="selectCode">
+
+      <ui-select
+        [options]="[
+          'Angular',
+          'React',
+          'Vue',
+          'Svelte'
+        ]">
+      </ui-select>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Multi Select</h2>
+
+    <ui-code-example
+      [code]="multiSelectCode">
+
+      <ui-select
+        [multiple]="true"
+        [options]="[
+          'Angular',
+          'React',
+          'Vue',
+          'Svelte'
+        ]">
+      </ui-select>
+
+    </ui-code-example>
+
+  </section>
+  
+</div>

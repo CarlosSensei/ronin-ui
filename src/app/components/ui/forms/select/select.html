@@ -1,0 +1,144 @@
+<div
+  class="select-container"
+  (click)="$event.stopPropagation()">
+
+  <button
+    #selectTrigger
+    class="select-trigger"
+    type="button"
+    (click)="toggle()">
+
+    <span>
+
+      @if (multiple()) {
+
+        @if (selectedItems().length) {
+
+          <div class="chips">
+
+            @for (
+              item of selectedItems();
+              track item
+            ) {
+
+              <span class="chip">
+
+                {{ item }}
+
+                <button
+                  type="button"
+                  (click)="
+                    $event.stopPropagation();
+                    toggleOption(item)
+                  ">
+
+                  ×
+
+                </button>
+
+              </span>
+
+            }
+
+          </div>
+
+        } @else {
+
+          {{ placeholder() }}
+
+        }
+
+      } @else {
+
+        @if (selected()) {
+
+          {{ selected() }}
+
+        } @else {
+
+          {{ placeholder() }}
+
+        }
+
+      }
+
+    </span>
+
+    <i
+      class="ri-arrow-down-s-line"
+      [class.rotated]="open()">
+    </i>
+
+  </button>
+
+  @if (open()) {
+
+    <div
+      class="dropdown"
+      [class.dropdown-up]="openUpwards()">
+
+      <div class="search-box">
+
+        <i class="ri-search-line"></i>
+
+        <input
+          type="text"
+          placeholder="Search..."
+          [value]="searchTerm()"
+          (input)="onSearch($event)" />
+
+      </div>
+
+      @if (filteredOptions().length) {
+
+        @for (
+          option of filteredOptions();
+          track option
+        ) {
+
+          <button
+            class="option"
+            type="button"
+            (click)="select(option)">
+
+            @if (multiple()) {
+
+              <div class="option-content">
+
+                <span>
+                  {{ option }}
+                </span>
+
+                @if (
+                  selectedItems().includes(option)
+                ) {
+
+                  <i class="ri-check-line"></i>
+
+                }
+
+              </div>
+
+            } @else {
+
+              {{ option }}
+
+            }
+
+          </button>
+
+        }
+
+      } @else {
+
+        <div class="empty-state">
+          No results found
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

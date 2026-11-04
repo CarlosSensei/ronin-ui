@@ -5,6 +5,7 @@ import { Buttons } from './pages/buttons/buttons';
 import { Inputs } from './pages/inputs/inputs';
 import { Cards } from './pages/cards/cards';
 import { Heroes } from './pages/heroes/heroes';
+import { Forms } from './pages/forms/forms';
 
 export const routes: Routes = [
   {
@@ -26,5 +27,9 @@ export const routes: Routes = [
   {
     path: 'heroes',
     component: Heroes
+  },
+  {
+    path: 'forms',
+    component: Forms
   }
 ];

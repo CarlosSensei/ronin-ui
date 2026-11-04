@@ -1,29 +1,6 @@
 <h1>Buttons</h1>
 
-<div class="container">
-
-  <section>
-    <h2>Sizes</h2>
-
-    <ui-code-example [code]="sizesCode">
-
-      <div class="button-grid">
-        <ui-button size="sm">
-          Small
-        </ui-button>
-
-        <ui-button size="md">
-          Medium
-        </ui-button>
-
-        <ui-button size="lg">
-          Large
-        </ui-button>
-      </div>
-
-    </ui-code-example>
-
-  </section>
+<div class="buttons-grid">
 
   <section>
     <h2>Variants</h2>
@@ -36,6 +13,32 @@
         <ui-button variant="outline">Outline</ui-button>
         <ui-button variant="ghost">Ghost</ui-button>
         <ui-button variant="danger">Danger</ui-button>
+
+      </div>
+
+    </ui-code-example>
+
+  </section>
+
+  <section>
+
+    <h2>Animated Border Buttons</h2>
+
+    <ui-code-example [code]="animatedCode">
+
+      <div class="button-grid">
+
+        <ui-button variant="animated-pulse">
+          Pulse Border
+        </ui-button>
+
+        <ui-button variant="animated-neon">
+          Neon Flow
+        </ui-button>
+
+        <ui-button variant="animated-energy">
+          Energy Ring
+        </ui-button>
 
       </div>
 
@@ -162,25 +165,22 @@
   </section>
 
   <section>
+    <h2>Sizes</h2>
 
-    <h2>Animated Border Buttons</h2>
-
-    <ui-code-example [code]="animatedCode">
+    <ui-code-example [code]="sizesCode">
 
       <div class="button-grid">
-
-        <ui-button variant="animated-pulse">
-          Pulse Border
+        <ui-button size="sm">
+          Small
         </ui-button>
 
-        <ui-button variant="animated-neon">
-          Neon Flow
+        <ui-button size="md">
+          Medium
         </ui-button>
 
-        <ui-button variant="animated-energy">
-          Energy Ring
+        <ui-button size="lg">
+          Large
         </ui-button>
-
       </div>
 
     </ui-code-example>
