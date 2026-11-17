@@ -1,0 +1,29 @@
+<div class="tabs" role="tablist" aria-label="Proceso creativo">
+  @for (tab of tabs(); track $index; let index = $index) {
+    <button
+      type="button"
+      role="tab"
+      [id]="instanceId + '-tab-' + index"
+      [attr.aria-controls]="instanceId + '-panel-' + index"
+      [attr.aria-selected]="active() === index"
+      [tabIndex]="active() === index ? 0 : -1"
+      (click)="active.set(index)"
+      (keydown)="onKey($event, index)"
+    >
+      {{ tab.title }}
+    </button>
+  }
+</div>
+@for (tab of tabs(); track $index; let index = $index) {
+  <div
+    class="panel"
+    role="tabpanel"
+    [id]="instanceId + '-panel-' + index"
+    [attr.aria-labelledby]="instanceId + '-tab-' + index"
+    [hidden]="active() !== index"
+    tabindex="0"
+  >
+    <span>0{{ index + 1 }} / THE PROCESS</span>
+    <p>{{ tab.content }}</p>
+  </div>
+}

@@ -22,7 +22,7 @@
 
   border-radius: 999px;
 
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 
 .toggle-thumb {
@@ -42,7 +42,7 @@
 
   background: white;
 
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 
 .toggle:hover {
@@ -54,8 +54,7 @@
 
   border-color: var(--color-primary);
 
-  box-shadow:
-    0 0 20px rgba(255,145,0,.25);
+  box-shadow: 0 0 20px rgba(255, 145, 0, 0.25);
 }
 
 .checked .toggle-thumb {
@@ -84,14 +83,9 @@
 
   overflow: hidden;
 
-  background:
-    linear-gradient(
-      135deg,
-      #0b1120,
-      #0a3594
-    );
+  background: linear-gradient(135deg, #0b1120, #0a3594);
 
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 
 .theme-thumb {
@@ -111,19 +105,12 @@
 
   background: rgb(15, 3, 178);
 
-  transition:
-    transform .4s cubic-bezier(.22,1,.36,1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .theme-premium.checked {
-  background:
-    linear-gradient(
-      135deg,
-      #ff9100,
-      #ffd700
-    );
-  box-shadow:
-    0 0 24px rgba(255,145,0,.35);
+  background: linear-gradient(135deg, #ff9100, #ffd700);
+  box-shadow: 0 0 24px rgba(255, 145, 0, 0.35);
 
   .theme-thumb {
     transform: translateX(46px);
@@ -135,4 +122,3 @@
 .theme-premium:hover {
   transform: scale(1.03);
 }
-

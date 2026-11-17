@@ -1,16 +1,10 @@
 import { Component, computed, input, signal } from '@angular/core';
 
-export type InputVariant =
-  | 'default'
-  | 'filled'
-  | 'search'
-  | 'password'
-  | 'floating';
+export type InputVariant = 'default' | 'filled' | 'search' | 'password' | 'floating';
 
-export type InputState =
-  | 'default'
-  | 'success'
-  | 'error';
+export type InputState = 'default' | 'success' | 'error';
+
+let nextInputId = 0;
 
 @Component({
   selector: 'ui-input',
@@ -18,6 +12,7 @@ export type InputState =
   styleUrl: './input.scss',
 })
 export class InputComponent {
+  readonly inputId = `ronin-input-${nextInputId++}`;
 
   readonly placeholder = input('Enter text...');
   readonly variant = input<InputVariant>('default');
@@ -26,15 +21,10 @@ export class InputComponent {
   readonly state = input<InputState>('default');
   readonly showPassword = signal(false);
   readonly classes = computed(() =>
-    [
-      'ronin-input',
-      this.variant(),
-      this.state(),
-    ].filter(Boolean)
-    .join(' ')
+    ['ronin-input', this.variant(), this.state()].filter(Boolean).join(' '),
   );
 
   togglePassword(): void {
-    this.showPassword.update(value => !value);
+    this.showPassword.update((value) => !value);
   }
 }

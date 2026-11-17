@@ -1,0 +1,14 @@
+<div class="accordion">
+  @for (item of items(); track $index; let index = $index) {
+    <section class="item">
+      <h3>
+        <button type="button" [attr.aria-expanded]="active() === index" (click)="toggle(index)">
+          {{ item.title }}<span aria-hidden="true">{{ active() === index ? '−' : '+' }}</span>
+        </button>
+      </h3>
+      @if (active() === index) {
+        <p>{{ item.content }}</p>
+      }
+    </section>
+  }
+</div>

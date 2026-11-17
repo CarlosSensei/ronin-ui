@@ -1,55 +1,42 @@
-import {
-  Component,
-  input,
-  signal,
-  effect
-} from '@angular/core';
+import { Component, input, signal, effect } from '@angular/core';
 
 @Component({
-    selector: 'ui-segmented-toggle',
-    standalone: true,
-    templateUrl: './segmented-toggle.html',
-    styleUrl: './segmented-toggle.scss',
+  selector: 'ui-segmented-toggle',
+  standalone: true,
+  templateUrl: './segmented-toggle.html',
+  styleUrl: './segmented-toggle.scss',
 })
 export class SegmentedToggleComponent {
+  readonly options = input<string[]>([]);
+  readonly selected = signal('');
 
-    readonly options = input<string[]>([]);
-    readonly selected = signal('');
+  constructor() {
+    effect(() => {
+      const first = this.options()[0];
 
-    constructor() {
+      if (first && !this.selected()) {
+        this.selected.set(first);
+      }
+    });
+  }
 
-        effect(() => {
+  ngOnInit() {
+    const first = this.options()[0];
 
-            const first = this.options()[0];
-
-            if (first && !this.selected()) {
-            this.selected.set(first);
-            }
-
-        });
-
+    if (first) {
+      this.selected.set(first);
     }
+  }
 
-    ngOnInit() {
+  selectedIndex = signal(0);
 
-        const first = this.options()[0];
+  select(index: number): void {
+    this.selectedIndex.set(index);
 
-        if (first) {
-            this.selected.set(first);
-        }
+    const option = this.options()[index];
+
+    if (option) {
+      this.selected.set(option);
     }
-
-
-    selectedIndex = signal(0);
-
-    select(index: number): void {
-
-        this.selectedIndex.set(index);
-
-        const option = this.options()[index];
-
-        if (option) {
-            this.selected.set(option);
-        }
-    }
+  }
 }

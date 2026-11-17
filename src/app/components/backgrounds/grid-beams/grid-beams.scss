@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+:host(.paused) *,
+:host(.paused) *::after {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+:host {
+  background: #0c131b;
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#b9d5f010 1px, transparent 1px),
+    linear-gradient(90deg, #b9d5f010 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.beam {
+  position: absolute;
+  filter: drop-shadow(0 0 6px #a6c9ff);
+}
+.horizontal {
+  top: 96px;
+  height: 1px;
+  width: 150px;
+  background: linear-gradient(90deg, transparent, #b3d5ff);
+  animation: beam-x 7s linear infinite;
+}
+.vertical {
+  left: 65%;
+  width: 1px;
+  height: 110px;
+  background: linear-gradient(transparent, #d7b7ff);
+  animation: beam-y 9s linear infinite;
+}
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse, transparent, #0c131b99);
+}
+@keyframes beam-x {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes beam-y {
+  from {
+    top: -110px;
+  }
+  to {
+    top: 100%;
+  }
+}

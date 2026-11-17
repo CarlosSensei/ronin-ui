@@ -1,0 +1,31 @@
+.magnet {
+  padding: 25px;
+  display: inline-block;
+}
+button {
+  border: 0;
+  border-radius: 50px;
+  background: #d9f85f;
+  color: #1a2210;
+  padding: 20px 28px;
+  font: 500 15px sans-serif;
+  cursor: pointer;
+  transition:
+    transform 0.16s ease-out,
+    box-shadow 0.25s;
+}
+button:hover {
+  box-shadow: 0 0 35px #d9f85f35;
+}
+button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+span {
+  margin-left: 22px;
+}
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}

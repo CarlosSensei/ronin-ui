@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  width: 330px;
+  max-width: 100%;
+  color: #ede8df;
+}
+.accordion {
+  border-top: 1px solid #ffffff24;
+}
+.item {
+  border-bottom: 1px solid #ffffff24;
+}
+h3 {
+  margin: 0;
+}
+button {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: 500 13px system-ui;
+  text-align: left;
+  cursor: pointer;
+}
+button span {
+  color: #d6bc8c;
+}
+p {
+  margin: 0;
+  padding: 0 22px 10px 0;
+  color: #aaa7ad;
+  font: 12px/1.7 system-ui;
+}
+button:focus-visible {
+  outline: 2px solid #d6bc8c;
+  outline-offset: 3px;
+}

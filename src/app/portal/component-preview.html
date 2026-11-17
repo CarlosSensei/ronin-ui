@@ -1,0 +1,101 @@
+@switch (componentId()) {
+  @case ('lava') {
+    <ronin-lava [paused]="paused()" /><span class="lava-label">ronin lava.</span>
+  }
+  @case ('magnetic') {
+    <ui-magnetic-button />
+  }
+  @case ('spotlight') {
+    <ui-spotlight-card />
+  }
+  @case ('energy') {
+    <ui-button variant="animated-energy" size="lg">Explore the unknown ↗</ui-button>
+  }
+  @case ('orbit') {
+    <ui-orbit-loader />
+  }
+  @case ('flip') {
+    <ui-flip-text />
+  }
+  @case ('toggle') {
+    <ui-toggle variant="theme" label="Modo creativo" />
+  }
+  @case ('input') {
+    <ui-input variant="floating" label="Tu nombre" />
+  }
+  @case ('otp') {
+    <ui-otp-input />
+  }
+  @case ('range') {
+    <ui-range-slider />
+  }
+  @case ('segments') {
+    <ui-segmented-toggle [options]="['Diseño', 'Código', 'Deploy']" />
+  }
+  @case ('checkbox') {
+    <ui-checkbox label="Acepto el reto" />
+  }
+  @case ('select') {
+    <ui-select [options]="['Diseño', 'Desarrollo', 'Motion']" placeholder="Elige tu disciplina" />
+  }
+  @case ('multi-select') {
+    <ui-select
+      [multiple]="true"
+      [options]="['Angular', 'TypeScript', 'SCSS']"
+      placeholder="Tu stack"
+    />
+  }
+  @case ('radio') {
+    <ui-radio-group [options]="['Diseño', 'Desarrollo', 'Motion']" />
+  }
+  @case ('pulse') {
+    <ui-button variant="animated-pulse" size="lg">Dale al play ↗</ui-button>
+  }
+  @case ('neon') {
+    <ui-button variant="animated-neon" size="lg">Enciende tu idea ↗</ui-button>
+  }
+  @case ('outline') {
+    <ui-button variant="outline" size="lg">Ver el proyecto ↗</ui-button>
+  }
+  @case ('cta') {
+    <ui-button variant="cta" size="lg">Crear algo increíble ↗</ui-button>
+  }
+  @case ('search') {
+    <ui-input variant="search" placeholder="Busca tu próxima idea…" />
+  }
+  @case ('password') {
+    <ui-input variant="password" label="Contraseña" placeholder="Tu contraseña" />
+  }
+  @case ('filled') {
+    <ui-input variant="filled" label="Tu proyecto" placeholder="Ponle nombre a tu proyecto" />
+  }
+  @case ('silk') {
+    <ronin-silk-aurora [paused]="paused()" /><span class="background-caption">Silk Aurora</span>
+  }
+  @case ('eclipse') {
+    <ronin-orbital-eclipse [paused]="paused()" /><span class="background-caption"
+      >Orbital Eclipse</span
+    >
+  }
+  @case ('contours') {
+    <ronin-contour-field [paused]="paused()" /><span class="background-caption">Contour Field</span>
+  }
+  @case ('beams') {
+    <ronin-grid-beams [paused]="paused()" /><span class="background-caption">Grid Beams</span>
+  }
+  @case ('mesh') {
+    <ronin-soft-mesh [paused]="paused()" /><span class="background-caption">Soft Mesh</span>
+  }
+  @case ('waves') {
+    <ronin-dune-waves [paused]="paused()" /><span class="background-caption">Dune Waves</span>
+  }
+  @case ('accordion') {
+    <ui-quiet-accordion />
+  }
+  @case ('tabs') {
+    <ui-studio-tabs />
+  }
+  @case ('copy') {
+    <ui-copy-chip />
+  }
+}

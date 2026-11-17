@@ -1,0 +1,80 @@
+:host {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+:host(.paused) *,
+:host(.paused) *::after {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+:host {
+  background: radial-gradient(ellipse at center, #39221c, #100f16 70%);
+}
+.halo,
+.planet,
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+}
+.halo {
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  background: #e6a36b;
+  box-shadow: 0 0 55px 12px #e4a16c55;
+  animation: eclipse-glow 9s ease-in-out infinite alternate;
+}
+.planet {
+  width: 154px;
+  height: 154px;
+  transform: translate(-47%, -52%);
+  background: radial-gradient(circle at 30% 30%, #29242b, #0e0d12 70%);
+}
+.orbit {
+  width: 290px;
+  height: 110px;
+  border: 1px solid #edc29b44;
+  animation: orbit-turn 28s linear infinite;
+}
+.orbit::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #edc29b;
+  border-radius: 50%;
+  left: 15%;
+  top: 10%;
+  box-shadow: 0 0 14px #edc29b;
+}
+.orbit-b {
+  width: 350px;
+  height: 155px;
+  animation-direction: reverse;
+  opacity: 0.45;
+}
+@keyframes orbit-turn {
+  from {
+    transform: translate(-50%, -50%) rotate(-25deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(335deg);
+  }
+}
+@keyframes eclipse-glow {
+  to {
+    box-shadow: 0 0 85px 20px #e4a16c33;
+  }
+}

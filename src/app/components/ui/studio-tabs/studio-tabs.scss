@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  width: 330px;
+  max-width: 100%;
+  color: #ede8df;
+}
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ffffff20;
+  gap: 20px;
+}
+button {
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: #9b98a4;
+  cursor: pointer;
+  font: 12px system-ui;
+}
+button[aria-selected='true'] {
+  color: #d8c7f1;
+  border-color: #c3a3ed;
+}
+.panel {
+  padding: 25px 0 5px;
+}
+.panel span {
+  color: #8d8796;
+  font: 9px monospace;
+  letter-spacing: 0.1em;
+}
+p {
+  font: 18px/1.5 system-ui;
+  letter-spacing: -0.04em;
+  margin: 15px 0 0;
+}
+button:focus-visible,
+.panel:focus-visible {
+  outline: 2px solid #c3a3ed;
+  outline-offset: 3px;
+}

@@ -1,212 +1,223 @@
+:host {
+  display: block;
+  width: 320px;
+  max-width: 100%;
+}
+
 .select-container {
-    position: relative;
-    width: 320px;
+  position: relative;
+  width: 100%;
 }
 
 .select-trigger {
-    width: 100%;
+  width: 100%;
 
-    display: flex;
+  display: flex;
 
-    justify-content: space-between;
-    align-items: center;
+  justify-content: space-between;
+  align-items: center;
 
-    padding: .85rem 1rem;
+  padding: 0.85rem 1rem;
 
-    border-radius: var(--radius-md);
+  border-radius: var(--radius-md);
 
-    border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
 
-    background: var(--color-surface);
+  background: var(--color-surface);
 
-    color: var(--color-text);
+  color: var(--color-text);
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: all .25s ease;
+  transition: all 0.25s ease;
 }
 
 .select-trigger:hover {
-    border-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .select-trigger i {
-    transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
 
 .rotated {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .dropdown {
-    position: absolute;
+  position: absolute;
 
-    top: calc(100% + .5rem);
+  top: calc(100% + 0.5rem);
 
-    left: 0;
-    right: 0;
+  left: 0;
+  right: 0;
 
-    padding: .5rem;
+  padding: 0.5rem;
 
-    border-radius: var(--radius-md);
+  border-radius: var(--radius-md);
 
-    border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
 
-    background: var(--color-surface);
+  background: var(--color-surface);
 
-    box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md);
 
-    z-index: 999;
-    animation: dropdown-enter .2s ease;
+  z-index: 999;
+  max-height: 220px;
+  overflow-y: auto;
+  animation: dropdown-enter 0.2s ease;
 }
 
 .dropdown-up {
   top: auto;
 
-  bottom: calc(100% + .5rem);
+  bottom: calc(100% + 0.5rem);
 }
 
 .option {
-    width: 100%;
+  width: 100%;
 
-    text-align: left;
+  text-align: left;
 
-    border: none;
+  border: none;
 
-    background: transparent;
+  background: transparent;
 
-    color: var(--color-text);
+  color: var(--color-text);
 
-    padding: .75rem;
+  padding: 0.75rem;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .option:hover {
-    background:
-        rgba(255,145,0,.08);
+  background: rgba(255, 145, 0, 0.08);
 
-    color:
-        var(--color-primary);
+  color: var(--color-primary);
 }
 
 @keyframes dropdown-enter {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .search-box {
-    position: relative;
+  position: relative;
 
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .search-box input {
-    width: 100%;
+  width: 100%;
 
-    padding:
-        .75rem
-        .75rem
-        .75rem
-        2.5rem;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
 
-    border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border);
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    background: var(--color-background);
+  background: var(--color-background);
 
-    color: var(--color-text);
+  color: var(--color-text);
 
-    outline: none;
+  outline: none;
 }
 
 .search-box i {
-    position: absolute;
+  position: absolute;
 
-    left: .8rem;
-    top: 50%;
+  left: 0.8rem;
+  top: 50%;
 
-    transform: translateY(-50%);
+  transform: translateY(-50%);
 
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
 .search-box input:focus {
-    border-color: var(--color-primary);
+  border-color: var(--color-primary);
 
-    box-shadow:
-        0 0 0 3px rgba(255,145,0,.12);
+  box-shadow: 0 0 0 3px rgba(255, 145, 0, 0.12);
 }
 
 .empty-state {
-    padding: 1rem;
+  padding: 1rem;
 
-    text-align: center;
+  text-align: center;
 
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 }
 
-
 .chips {
-    display: flex;
+  display: flex;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    gap: .5rem;
+  gap: 0.5rem;
 }
 
 .chip {
-    display: inline-flex;
+  display: inline-flex;
 
-    align-items: center;
+  align-items: center;
 
-    gap: .5rem;
+  gap: 0.5rem;
 
-    padding:
-        .25rem
-        .75rem;
+  padding: 0.25rem 0.75rem;
 
-    border-radius: 999px;
+  border-radius: 999px;
 
-    background:
-        rgba(255,145,0,.15);
+  background: rgba(255, 145, 0, 0.15);
 
-    color: var(--color-primary);
+  color: var(--color-primary);
 
-    font-size: .85rem;
+  font-size: 0.85rem;
 }
 
 .chip button {
-    border: none;
+  border: none;
 
-    background: transparent;
+  background: transparent;
 
-    color: inherit;
+  color: inherit;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .option-content {
-    display: flex;
+  display: flex;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    align-items: center;
-    
-    width: 100%;
+  align-items: center;
 
-    color: var(--color-primary);
+  width: 100%;
+
+  color: var(--color-primary);
 }
 
+.chips {
+  margin-top: 0.5rem;
+}
+.select-trigger > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.select-trigger:focus-visible,
+.option:focus-visible,
+.chip button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

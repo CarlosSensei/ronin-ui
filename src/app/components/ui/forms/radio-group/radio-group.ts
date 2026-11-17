@@ -1,8 +1,6 @@
-import {
-  Component,
-  input,
-  signal,
-} from '@angular/core';
+import { Component, input, signal } from '@angular/core';
+
+let nextRadioGroupId = 0;
 
 @Component({
   selector: 'ui-radio-group',
@@ -11,6 +9,8 @@ import {
   styleUrl: './radio-group.scss',
 })
 export class RadioGroupComponent {
+  readonly groupName = `ronin-radio-${nextRadioGroupId++}`;
+  readonly label = input('Elige una opción');
 
   readonly options = input<string[]>([]);
 

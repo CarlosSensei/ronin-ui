@@ -1,144 +1,68 @@
 <div
   class="select-container"
-  (click)="$event.stopPropagation()">
-
+  (click)="$event.stopPropagation()"
+  (keydown.escape)="close(); triggerRef.nativeElement.focus()"
+>
   <button
     #selectTrigger
     class="select-trigger"
     type="button"
-    (click)="toggle()">
-
-    <span>
-
-      @if (multiple()) {
-
-        @if (selectedItems().length) {
-
-          <div class="chips">
-
-            @for (
-              item of selectedItems();
-              track item
-            ) {
-
-              <span class="chip">
-
-                {{ item }}
-
-                <button
-                  type="button"
-                  (click)="
-                    $event.stopPropagation();
-                    toggleOption(item)
-                  ">
-
-                  ×
-
-                </button>
-
-              </span>
-
-            }
-
-          </div>
-
-        } @else {
-
-          {{ placeholder() }}
-
-        }
-
-      } @else {
-
-        @if (selected()) {
-
-          {{ selected() }}
-
-        } @else {
-
-          {{ placeholder() }}
-
-        }
-
-      }
-
-    </span>
-
-    <i
-      class="ri-arrow-down-s-line"
-      [class.rotated]="open()">
-    </i>
-
+    (click)="toggle()"
+    [attr.aria-expanded]="open()"
+    [attr.aria-label]="placeholder()"
+  >
+    <span>{{
+      multiple()
+        ? selectedItems().length
+          ? selectedItems().join(', ')
+          : placeholder()
+        : selected() || placeholder()
+    }}</span>
+    <i class="ri-arrow-down-s-line" [class.rotated]="open()" aria-hidden="true"></i>
   </button>
-
-  @if (open()) {
-
-    <div
-      class="dropdown"
-      [class.dropdown-up]="openUpwards()">
-
-      <div class="search-box">
-
-        <i class="ri-search-line"></i>
-
-        <input
-          type="text"
-          placeholder="Search..."
-          [value]="searchTerm()"
-          (input)="onSearch($event)" />
-
-      </div>
-
-      @if (filteredOptions().length) {
-
-        @for (
-          option of filteredOptions();
-          track option
-        ) {
-
-          <button
-            class="option"
-            type="button"
-            (click)="select(option)">
-
-            @if (multiple()) {
-
-              <div class="option-content">
-
-                <span>
-                  {{ option }}
-                </span>
-
-                @if (
-                  selectedItems().includes(option)
-                ) {
-
-                  <i class="ri-check-line"></i>
-
-                }
-
-              </div>
-
-            } @else {
-
-              {{ option }}
-
-            }
-
-          </button>
-
-        }
-
-      } @else {
-
-        <div class="empty-state">
-          No results found
-        </div>
-
+  @if (multiple() && selectedItems().length) {
+    <div class="chips" aria-label="Opciones seleccionadas">
+      @for (item of selectedItems(); track item) {
+        <span class="chip"
+          >{{ item
+          }}<button type="button" [attr.aria-label]="'Quitar ' + item" (click)="toggleOption(item)">
+            ×
+          </button></span
+        >
       }
-
     </div>
-
   }
-
+  @if (open()) {
+    <div class="dropdown" [class.dropdown-up]="openUpwards()">
+      <div class="search-box">
+        <i class="ri-search-line" aria-hidden="true"></i>
+        <input
+          type="search"
+          placeholder="Buscar opciones…"
+          aria-label="Buscar opciones"
+          [value]="searchTerm()"
+          (input)="onSearch($event)"
+        />
+      </div>
+      @for (option of filteredOptions(); track option) {
+        <button
+          class="option"
+          type="button"
+          [attr.aria-pressed]="
+            multiple() ? selectedItems().includes(option) : selected() === option
+          "
+          (click)="select(option)"
+        >
+          <span class="option-content"
+            >{{ option }}
+            @if (multiple() ? selectedItems().includes(option) : selected() === option) {
+              <i class="ri-check-line" aria-hidden="true"></i>
+            }
+          </span>
+        </button>
+      } @empty {
+        <div class="empty-state">No hay resultados</div>
+      }
+    </div>
+  }
 </div>

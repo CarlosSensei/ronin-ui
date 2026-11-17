@@ -1,28 +1,13 @@
 <div class="segmented-toggle">
-
   <div
     class="active-indicator"
     [style.width.%]="100 / options().length"
-    [style.transform]="
-      'translateX(' + selectedIndex() * 100 + '%)'
-    ">
-  </div>
+    [style.transform]="'translateX(' + selectedIndex() * 100 + '%)'"
+  ></div>
 
-  @for (
-    option of options();
-    track option;
-    let i = $index
-  ) {
-
-    <button
-      class="segment"
-      [class.active]="selected() === option"
-      (click)="select(i)">
-
+  @for (option of options(); track option; let i = $index) {
+    <button class="segment" [class.active]="selected() === option" (click)="select(i)">
       {{ option }}
-
     </button>
-
   }
-
 </div>

@@ -1,68 +1,62 @@
 @if (variant() === 'theme-premium') {
-
   <div class="toggle-wrapper">
-
     <div
       class="theme-premium"
+      role="switch"
+      tabindex="0"
+      [attr.aria-label]="label()"
+      [attr.aria-checked]="checked()"
+      (keydown.enter)="toggle()"
+      (keydown.space)="$event.preventDefault(); toggle()"
       [class.checked]="checked()"
-      (click)="toggle()">
-
+      (click)="toggle()"
+    >
       <div class="theme-thumb">
-
         @if (checked()) {
           <i class="ri-sun-fill"></i>
         } @else {
           <i class="ri-moon-clear-fill"></i>
         }
-
       </div>
-
     </div>
 
     <span>
       {{ label() }}
     </span>
-
   </div>
-
 } @else {
-
   <div
     class="toggle-wrapper"
-    (click)="toggle()">
-
+    role="switch"
+    tabindex="0"
+    [attr.aria-label]="label()"
+    [attr.aria-checked]="checked()"
+    (keydown.enter)="toggle()"
+    (keydown.space)="$event.preventDefault(); toggle()"
+    (click)="toggle()"
+  >
     <div [class]="classes()">
-
       <div class="toggle-thumb">
-
         @if (variant() === 'theme') {
-
           @if (checked()) {
             <i class="ri-sun-line"></i>
           } @else {
             <i class="ri-moon-line"></i>
           }
-
         }
 
         @if (variant() === 'notification') {
-
           @if (checked()) {
             <i class="ri-notification-3-line"></i>
           } @else {
             <i class="ri-notification-off-line"></i>
           }
-
         }
-
       </div>
-
     </div>
 
     <span>
       {{ label() }}
     </span>
-
   </div>
-
 }

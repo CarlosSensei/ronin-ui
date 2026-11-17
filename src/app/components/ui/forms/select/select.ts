@@ -5,7 +5,7 @@ import {
   ViewChild,
   input,
   signal,
-  computed
+  computed,
 } from '@angular/core';
 
 @Component({
@@ -15,115 +15,72 @@ import {
   styleUrl: './select.scss',
 })
 export class SelectComponent {
+  @ViewChild('selectTrigger')
+  triggerRef!: ElementRef<HTMLButtonElement>;
 
-    @ViewChild('selectTrigger')
-    triggerRef!: ElementRef<HTMLButtonElement>;
+  readonly options = input<string[]>([]);
+  readonly placeholder = input('Select an option');
+  readonly open = signal(false);
+  readonly selected = signal('');
+  readonly openUpwards = signal(false);
+  readonly searchTerm = signal('');
+  readonly multiple = input(false);
+  readonly selectedItems = signal<string[]>([]);
 
-    readonly options = input<string[]>([]);
-    readonly placeholder = input('Select an option');
-    readonly open = signal(false);
-    readonly selected = signal('');
-    readonly openUpwards = signal(false);
-    readonly searchTerm = signal('');
-    readonly multiple = input(false);
-    readonly selectedItems = signal<string[]>([]);
+  toggle(): void {
+    if (this.triggerRef) {
+      const rect = this.triggerRef.nativeElement.getBoundingClientRect();
 
-    toggle(): void {
+      const spaceBelow = window.innerHeight - rect.bottom;
 
-        if (this.triggerRef) {
+      const estimatedDropdownHeight = 220;
 
-        const rect =
-            this.triggerRef.nativeElement.getBoundingClientRect();
-
-        const spaceBelow =
-            window.innerHeight - rect.bottom;
-
-        const estimatedDropdownHeight = 220;
-
-        this.openUpwards.set(
-            spaceBelow < estimatedDropdownHeight
-        );
-
-        }
-
-        this.open.update(v => !v);
+      this.openUpwards.set(spaceBelow < estimatedDropdownHeight);
     }
 
-    toggleOption(option: string): void {
+    this.open.update((v) => !v);
+  }
 
-        const current =
-            this.selectedItems();
+  toggleOption(option: string): void {
+    const current = this.selectedItems();
 
-        const alreadySelected =
-            current.includes(option);
+    const alreadySelected = current.includes(option);
 
-        if (alreadySelected) {
+    if (alreadySelected) {
+      this.selectedItems.set(current.filter((item) => item !== option));
+    } else {
+      this.selectedItems.set([...current, option]);
+    }
+  }
 
-            this.selectedItems.set(
-            current.filter(
-                item => item !== option
-            )
-            );
+  select(option: string): void {
+    if (this.multiple()) {
+      this.toggleOption(option);
 
-        } else {
-
-            this.selectedItems.set([
-            ...current,
-            option,
-            ]);
-
-        }
-
+      return;
     }
 
+    this.selected.set(option);
 
-    select(option: string): void {
+    this.searchTerm.set('');
 
-        if (this.multiple()) {
+    this.open.set(false);
+  }
 
-            this.toggleOption(option);
+  @HostListener('document:click')
+  close(): void {
+    this.open.set(false);
+  }
 
-            return;
-        }
+  readonly filteredOptions = computed(() => {
+    const search = this.searchTerm().toLowerCase();
 
-        this.selected.set(option);
+    return this.options().filter((option) => option.toLowerCase().includes(search));
+  });
 
-        this.searchTerm.set('');
+  onSearch(event: Event): void {
+    const input = event.target as HTMLInputElement;
 
-        this.open.set(false);
-
-    }
-
-    @HostListener('document:click')
-    close(): void {
-        this.open.set(false);
-    }
-
-    readonly filteredOptions = computed(() => {
-
-        const search =
-            this.searchTerm().toLowerCase();
-
-        return this.options().filter(
-            option =>
-            option
-                .toLowerCase()
-                .includes(search)
-        );
-
-    });
-
-    onSearch(event: Event): void {
-
-        const input =
-            event.target as HTMLInputElement;
-
-        this.searchTerm.set(
-            input.value
-        );
-
-    }
-
-
-
+    this.searchTerm.set(input.value);
+  }
 }

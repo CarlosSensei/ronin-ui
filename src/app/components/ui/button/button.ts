@@ -16,16 +16,9 @@ export type ButtonVariant =
   | 'link'
   | 'troll';
 
-export type ButtonSize =
-  | 'sm'
-  | 'md'
-  | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
-export type IconColor =
-| 'default'
-| 'primary'
-| 'success'
-| 'danger';
+export type IconColor = 'default' | 'primary' | 'success' | 'danger';
 
 @Component({
   selector: 'ui-button',
@@ -59,6 +52,6 @@ export class ButtonComponent {
       this.colorScheme() !== 'default' ? `icon-${this.colorScheme()}` : '',
     ]
       .filter(Boolean)
-      .join(' ')
+      .join(' '),
   );
 }

@@ -1,15 +1,19 @@
 {
-  "name": "ronin-ui",
+  "name": "ronin-ui-portal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "catalog": "node scripts/generate-catalog.mjs",
+    "prestart": "npm run catalog",
+    "prebuild": "npm run catalog",
+    "pretest": "npm run catalog"
   },
   "private": true,
-  "packageManager": "npm@11.19.1",
+  "packageManager": "npm@11.9.0",
   "dependencies": {
     "@angular/common": "^22.1.0",
     "@angular/compiler": "^22.1.0",

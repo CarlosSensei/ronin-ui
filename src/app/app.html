@@ -1,28 +1,281 @@
-<header class="mobile-header">
-
+<a href="#content" class="skip">Saltar al contenido</a>
+<header class="topbar">
+  <a href="#" class="brand" (click)="selected.set(null)"
+    ><span class="brand-mark">r.</span> ronin<span class="brand-light">/ui</span></a
+  ><span class="version">ANGULAR 22</span>
+  <nav aria-label="Principal">
+    <a href="#catalogo" (click)="selected.set(null)">Componentes</a
+    ><a href="#guia" (click)="selected.set(null)">Cómo usarlo</a
+    ><a href="https://github.com/CarlosSensei/ronin-ui" target="_blank" rel="noopener noreferrer"
+      >GitHub ↗</a
+    >
+  </nav>
   <button
-    class="hamburger"
-    (click)="toggleSidebar()">
-
-    <i
-      [class]="sidebarOpen() ? 'ri-close-line' : 'ri-menu-line'">
-    </i>
-
-  </button>
-
-  <span>RONIN UI</span>
-
+    class="mobile-toggle"
+    (click)="mobileMenu.set(!mobileMenu())"
+    [attr.aria-expanded]="mobileMenu()"
+  >
+    Categorías ☰</button
+  ><span class="top-note"><i></i> BUILT TO BE REMIXED</span>
 </header>
-
-<div class="layout">
-
-  <app-sidebar
-    [isOpen]="sidebarOpen()"
-    (closeSidebar)="closeSidebar()">
-  </app-sidebar>
-
-  <main class="content">
-    <router-outlet />
+<div class="shell">
+  <aside [class.mobile-open]="mobileMenu()">
+    <span class="sidebar-label">THE COMPONENT INDEX</span
+    ><button
+      class="all-link"
+      (click)="filterBy('Todos')"
+      [class.active]="category() === 'Todos' && !onlySaved()"
+    >
+      ◈ &nbsp; Explorar todo <span>{{ components.length }}</span></button
+    ><span class="sidebar-label category-title">COLECCIÓN</span>
+    <nav aria-label="Categorías">
+      @for (item of categories.slice(1); track item) {
+        <button (click)="filterBy(item)" [class.active]="category() === item && !onlySaved()">
+          <span class="category-icon">{{
+            item === 'Fondos' ? '▧' : item === 'Botones' ? '⌘' : item === 'Texto' ? 'T' : '◌'
+          }}</span
+          >{{ item }}<span class="count">{{ count(item) }}</span>
+        </button>
+      }
+    </nav>
+    <div class="sidebar-divider"></div>
+    <button
+      class="saved-link"
+      [class.active]="onlySaved()"
+      (click)="onlySaved.set(!onlySaved()); selected.set(null); mobileMenu.set(false)"
+    >
+      ♡ &nbsp; Tus favoritos <span>{{ saved().length }}</span>
+    </button>
+    <div class="sidebar-bottom">
+      <span class="tiny-mark">✷</span>
+      <p>Pequeños detalles.<br />Grandes interfaces.</p>
+      <span>DISEÑADO POR CARLOS HORRILLO</span>
+    </div>
+  </aside>
+  <main id="content">
+    @if (!selected()) {
+      <section class="hero">
+        <ronin-silk-aurora [paused]="paused()" />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="status-dot"></span> INDEPENDENT ANGULAR COMPONENT LIBRARY
+          </div>
+          <h1>Interfaces con<br /><em>carácter.</em><span class="hero-star">✷</span></h1>
+          <p>
+            Componentes que se sienten diferentes.<br />Explora, juega y llévatelos a tu próximo
+            proyecto.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#catalogo">Explorar componentes <span>↗</span></a
+            ><span>STANDALONE.<br />EDITABLES. TUYOS.</span>
+          </div>
+        </div>
+        <div class="hero-footer">
+          <span>SILK AURORA / LUZ EN MOVIMIENTO</span
+          ><button (click)="open(heroBackground)">El fondo también es un componente ↗</button
+          ><button (click)="paused.set(!paused())" [attr.aria-pressed]="paused()">
+            {{ paused() ? 'Reanudar ▷' : 'Pausar Ⅱ' }}
+          </button>
+        </div>
+      </section>
+      <div class="principles">
+        <span>✷ &nbsp; Angular nativo</span><span>⌘ &nbsp; Código a la vista</span
+        ><span>↗ &nbsp; Copia y personaliza</span><span>◉ &nbsp; Sin caja negra</span>
+      </div>
+      <section id="catalogo" class="catalog">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">THE GOOD STUFF</span>
+            <h2>
+              {{
+                onlySaved()
+                  ? 'Tu selección.'
+                  : category() === 'Todos'
+                    ? 'Encuentra tu próximo detalle.'
+                    : category() + '.'
+              }}
+            </h2>
+          </div>
+          <span class="result-count">{{ visibleComponents().length }} COMPONENTES</span>
+        </div>
+        <div class="catalog-toolbar">
+          <label class="search"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              type="search"
+              placeholder="Busca tu próxima idea..."
+              aria-label="Buscar componentes"
+              [value]="query()"
+              (input)="search($event)"
+            /><kbd>/ UI</kbd></label
+          >
+          <div class="category-pills">
+            @for (item of ['Todos', 'Botones', 'Fondos', 'Formularios']; track item) {
+              <button (click)="filterBy(item)" [class.selected]="category() === item">
+                {{ item }}
+              </button>
+            }
+          </div>
+        </div>
+        <div class="component-grid">
+          @for (item of visibleComponents(); track item.id) {
+            <article class="component-card">
+              <div class="preview-stage" [class]="'preview-stage tone-' + item.tone">
+                <span class="preview-label">{{ item.category }}</span
+                ><button
+                  class="favorite"
+                  (click)="toggleSaved(item.id)"
+                  [attr.aria-label]="
+                    (saved().includes(item.id) ? 'Quitar de favoritos ' : 'Guardar ') + item.name
+                  "
+                  [attr.aria-pressed]="saved().includes(item.id)"
+                >
+                  {{ saved().includes(item.id) ? '♥' : '♡' }}</button
+                ><ronin-preview [componentId]="item.id" [paused]="paused()" />
+              </div>
+              <div class="card-caption">
+                <div>
+                  <h3>
+                    <button (click)="open(item)">{{ item.name }}</button>
+                  </h3>
+                  <span>Angular · SCSS</span>
+                </div>
+                <button
+                  class="get-code"
+                  (click)="open(item)"
+                  [attr.aria-label]="'Ver código de ' + item.name"
+                >
+                  &lt;/&gt;
+                </button>
+              </div>
+            </article>
+          } @empty {
+            <div class="empty">
+              <span>⌕</span>
+              <h3>No encontramos ese detalle.</h3>
+              <p>Prueba otra búsqueda o guarda algún componente en favoritos.</p>
+              <button (click)="query.set(''); filterBy('Todos')">
+                Ver todos los componentes ↗
+              </button>
+            </div>
+          }
+        </div>
+      </section>
+      <section class="quickstart" id="guia">
+        <div>
+          <span class="eyebrow">SIN RITUALES. SIN MAGIA NEGRA.</span>
+          <h2>De la demo<br />a tu código.</h2>
+          <p>No necesitas instalar una librería completa.<br />Elige un componente y hazlo tuyo.</p>
+        </div>
+        <ol>
+          <li>
+            <b>01</b>
+            <div>
+              <h3>Encuentra tu componente</h3>
+              <p>Prueba la demo con ratón, teclado o pantalla táctil.</p>
+            </div>
+          </li>
+          <li>
+            <b>02</b>
+            <div>
+              <h3>Copia los archivos</h3>
+              <p>HTML, SCSS y TypeScript. El mismo código que ves funcionando.</p>
+            </div>
+          </li>
+          <li>
+            <b>03</b>
+            <div>
+              <h3>Importa. Personaliza. Publica.</h3>
+              <p>Añade el componente standalone a tus imports y ajusta sus inputs.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+    } @else {
+      @let item = selected()!;
+      <section class="detail">
+        <button class="back-button" (click)="selected.set(null)">← Volver a componentes</button>
+        <div class="detail-heading">
+          <div>
+            <span class="eyebrow">{{ item.category }} / ANGULAR STANDALONE</span>
+            <h1>{{ item.name }}</h1>
+            <p>{{ item.description }}</p>
+          </div>
+          <button class="outline-button" (click)="toggleSaved(item.id)">
+            {{ saved().includes(item.id) ? '♥ Guardado' : '♡ Guardar' }}
+          </button>
+        </div>
+        <div class="detail-preview" [class.light-surface]="surface() === 'light'">
+          <div class="preview-controls">
+            <span>LIVE PREVIEW</span
+            ><button (click)="surface.set(surface() === 'dark' ? 'light' : 'dark')">
+              Fondo {{ surface() === 'dark' ? 'claro ☼' : 'oscuro ◐' }}
+            </button>
+            @if (item.category === 'Fondos') {
+              <button (click)="paused.set(!paused())">
+                {{ paused() ? 'Reanudar' : 'Pausar' }}
+              </button>
+            }
+          </div>
+          <ronin-preview [componentId]="item.id" [paused]="paused()" />
+        </div>
+        <div class="code-panel">
+          <div class="code-toolbar">
+            <div class="code-tabs" role="tablist" aria-label="Archivos del componente">
+              @for (file of tabs; track file) {
+                <button
+                  role="tab"
+                  [attr.aria-selected]="tab() === file"
+                  (click)="tab.set(file); message.set('')"
+                >
+                  {{ file === 'uso' ? 'Cómo usarlo' : file.toUpperCase() }}
+                </button>
+              }
+            </div>
+            <div class="code-actions">
+              <button (click)="downloadFile()" aria-label="Descargar archivo actual">
+                ↓ Archivo</button
+              ><button (click)="copyCode()">Copiar código ⧉</button>
+            </div>
+          </div>
+          <pre role="tabpanel" tabindex="0" aria-label="Código fuente"><code>{{code()}}</code></pre>
+          <div class="code-footnote">
+            <span>{{ item.path }}.{{ tab() === 'uso' ? 'ts / html / scss' : tab() }}</span
+            ><span>FUENTE REAL · SIN ABREVIAR</span>
+          </div>
+        </div>
+        <div class="integration-note">
+          <h2>Listo para tu proyecto.</h2>
+          <p>Angular 22 · Componentes standalone · Estilos SCSS encapsulados</p>
+          <p>
+            Copia los tres archivos, conserva sus nombres y añade
+            <code>{{ item.className }}</code> a los imports del componente que lo utilizará. Los
+            componentes originales de Ronin usan las variables de
+            <code>src/component-tokens.scss</code>; los iconos de formulario requieren Remix Icon.
+          </p>
+          @if (item.category === 'Fondos') {
+            <p>
+              Colócalo dentro de un contenedor con <code>position: relative</code> y altura
+              definida. Usa <code>[paused]="true"</code> para detener la animación. Los fondos
+              respetan la preferencia de movimiento reducido.
+            </p>
+          }
+          <p>
+            Las demos de formulario mantienen el estado local: conecta sus valores a tu formulario
+            al integrarlas. El catálogo es estático y los favoritos se guardan en este navegador.
+          </p>
+        </div>
+      </section>
+    }
+    <footer>
+      <a class="brand" href="#" (click)="selected.set(null)"
+        >ronin<span class="brand-light">/ui</span></a
+      ><span>CRAFTED WITH INTENTION. BUILT WITH ANGULAR.</span
+      ><a href="https://github.com/CarlosSensei/ronin-ui" target="_blank" rel="noopener noreferrer"
+        >Repositorio original ↗</a
+      >
+    </footer>
   </main>
-
 </div>
+<div class="toast" role="status" [class.visible]="message()">{{ message() }}</div>

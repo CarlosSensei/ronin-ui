@@ -1,0 +1,32 @@
+.flip {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  font: 600 clamp(24px, 4vw, 46px)/1.2 sans-serif;
+  letter-spacing: -0.06em;
+  cursor: default;
+  color: #ffac75;
+}
+.flip > span {
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.flip > span:last-child {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  transform: translateY(110%) rotate(4deg);
+}
+.flip:hover > span:first-child,
+.flip:focus > span:first-child {
+  transform: translateY(-110%) rotate(-4deg);
+}
+.flip:hover > span:last-child,
+.flip:focus > span:last-child {
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip > span {
+    transition: none;
+  }
+}

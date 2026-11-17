@@ -1,0 +1,55 @@
+.loader {
+  color: #b7f4cf;
+  text-align: center;
+  font-family: sans-serif;
+}
+.orbit {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+.orbit > span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #b7f4cf;
+  border-radius: 50%;
+  animation: orbit 4s linear infinite;
+}
+.orbit > span:nth-child(2) {
+  animation-delay: -1.3s;
+}
+.orbit > span:nth-child(3) {
+  animation-delay: -2.6s;
+}
+b {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 38px;
+  font-weight: 400;
+}
+p {
+  font-size: 11px;
+  margin: 24px 0 0;
+  letter-spacing: 0.04em;
+}
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) scaleX(0.35);
+  }
+  to {
+    transform: rotate(180deg) scaleX(0.35);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit > span {
+    animation: none;
+  }
+  .orbit > span:nth-child(2) {
+    transform: rotate(60deg) scaleX(0.35);
+  }
+  .orbit > span:nth-child(3) {
+    transform: rotate(120deg) scaleX(0.35);
+  }
+}

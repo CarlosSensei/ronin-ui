@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+:host(.paused) *,
+:host(.paused) *::after {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+:host {
+  background: radial-gradient(ellipse at 60% 50%, #20352f, #101a19 75%);
+}
+svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease-out;
+}
+ellipse {
+  fill: none;
+  stroke: #b9d9c5;
+  stroke-width: 0.7;
+  opacity: 0.3;
+}
+ellipse:nth-child(3n) {
+  stroke: #e0d1a8;
+  opacity: 0.6;
+}
+
+:host {
+  pointer-events: auto;
+}

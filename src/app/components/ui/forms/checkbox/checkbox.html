@@ -1,17 +1,20 @@
 <label
   class="checkbox"
-  (click)="toggle()">
-
+  role="checkbox"
+  [attr.tabindex]="disabled() ? -1 : 0"
+  [attr.aria-checked]="checked()"
+  [attr.aria-disabled]="disabled()"
+  (keydown.space)="$event.preventDefault(); toggle()"
+  (keydown.enter)="toggle()"
+  (click)="toggle()"
+>
   <div [class]="classes()">
-
     @if (checked()) {
       <i class="ri-check-line"></i>
     }
-
   </div>
 
   <span>
     {{ label() }}
   </span>
-
 </label>

@@ -1,17 +1,12 @@
 <div class="slider-wrapper">
-
   <input
     type="range"
-
+    aria-label="Intensidad"
     min="0"
     max="100"
-
     [value]="value()"
+    (input)="onInput($event)"
+  />
 
-    (input)="onInput($event)" />
-
-  <div class="slider-value">
-    {{ value() }}%
-  </div>
-
+  <div class="slider-value">{{ value() }}%</div>
 </div>

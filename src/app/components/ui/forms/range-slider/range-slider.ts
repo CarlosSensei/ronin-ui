@@ -1,7 +1,4 @@
-import {
-  Component,
-  signal,
-} from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'ui-range-slider',
@@ -10,19 +7,11 @@ import {
   styleUrl: './range-slider.scss',
 })
 export class RangeSliderComponent {
-
-  readonly value =
-    signal(50);
+  readonly value = signal(50);
 
   onInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
 
-    const target =
-      event.target as HTMLInputElement;
-
-    this.value.set(
-      Number(target.value)
-    );
-
+    this.value.set(Number(target.value));
   }
-
 }

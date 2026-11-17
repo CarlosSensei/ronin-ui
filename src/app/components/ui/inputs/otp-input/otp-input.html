@@ -1,29 +1,17 @@
 <div class="otp-container">
-
-  @for (
-    digit of digits();
-    track $index
-  ) {
-
+  @for (digit of digits(); track $index) {
     <input
       #otpField
-
+      [attr.aria-label]="'Dígito ' + ($index + 1) + ' de 6'"
       class="otp-field"
-
       type="text"
-
       inputmode="numeric"
-
       autocomplete="one-time-code"
-
       maxlength="1"
-
       [value]="digit"
-
       (input)="onInput($index, $event)"
-      (keydown)="onKeyDown($index, $event)" 
-      (paste)="onPaste($event)" />
-
+      (keydown)="onKeyDown($index, $event)"
+      (paste)="onPaste($event)"
+    />
   }
-
 </div>

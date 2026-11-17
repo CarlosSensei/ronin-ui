@@ -1,0 +1,50 @@
+.spotlight {
+  position: relative;
+  padding: 28px;
+  width: 270px;
+  max-width: 100%;
+  border: 1px solid #ffffff25;
+  border-radius: 20px;
+  background: radial-gradient(circle at 0 0, #9d87ff30, transparent 70%), #17171d;
+  color: #f5f3ff;
+  transition:
+    transform 0.4s,
+    border-color 0.4s;
+}
+.spotlight:hover,
+.spotlight:focus-visible {
+  transform: translateY(-8px) rotate(-2deg);
+  border-color: #b5a3ff;
+  outline: none;
+}
+.symbol {
+  display: block;
+  font-size: 48px;
+  color: #b5a3ff;
+  margin-bottom: 25px;
+}
+.label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: #a09ba9;
+}
+h3 {
+  font: 500 23px/1.2 sans-serif;
+  margin: 10px 0;
+  letter-spacing: -0.04em;
+}
+p {
+  color: #a09ba9;
+  font: 12px/1.7 sans-serif;
+  margin: 0;
+}
+.arrow {
+  position: absolute;
+  right: 24px;
+  top: 28px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spotlight {
+    transition: none;
+  }
+}

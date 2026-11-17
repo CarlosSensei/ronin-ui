@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  max-width: 100%;
+  color: #e4e5df;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 14px 13px 18px;
+  border: 1px solid #ffffff20;
+  background: #101716;
+  border-radius: 10px;
+}
+code {
+  font: 11px monospace;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+button {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  border: 1px solid #ffffff14;
+  border-radius: 6px;
+  background: #ffffff08;
+  color: #c4d8b2;
+  cursor: pointer;
+}
+button:hover {
+  background: #ffffff16;
+}
+button:focus-visible {
+  outline: 2px solid #c4d8b2;
+  outline-offset: 3px;
+}
+.feedback {
+  display: block;
+  min-height: 12px;
+  margin-top: 14px;
+  text-align: center;
+  color: #8c9a8d;
+  font: 8px monospace;
+  letter-spacing: 0.07em;
+}

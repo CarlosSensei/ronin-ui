@@ -1,37 +1,33 @@
 <div class="input-wrapper">
-
   @if (variant() === 'floating') {
-
     <div class="floating-wrapper">
-
       <input
+        [id]="inputId"
+        [attr.aria-label]="label() || placeholder()"
         class="ronin-input floating"
         [class.success]="state() === 'success'"
         [class.error]="state() === 'error'"
         [placeholder]="' '"
-        [disabled]="disabled()" />
+        [disabled]="disabled()"
+      />
 
-      <label>
+      <label [for]="inputId">
         {{ label() }}
       </label>
-
     </div>
-
   } @else {
-
     @if (variant() === 'search') {
       <i class="ri-search-line input-icon"></i>
     }
 
     <input
-      [type]="
-        variant() === 'password'
-          ? (showPassword() ? 'text' : 'password')
-          : 'text'
-      "
+      [id]="inputId"
+      [attr.aria-label]="label() || placeholder()"
+      [type]="variant() === 'password' ? (showPassword() ? 'text' : 'password') : 'text'"
       [class]="classes()"
       [placeholder]="placeholder()"
-      [disabled]="disabled()" />
+      [disabled]="disabled()"
+    />
 
     @if (state() === 'success') {
       <i class="ri-check-line status-icon success-icon"></i>
@@ -42,22 +38,18 @@
     }
 
     @if (variant() === 'password') {
-
       <button
         class="input-action"
+        [attr.aria-label]="showPassword() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
         type="button"
-        (click)="togglePassword()">
-
+        (click)="togglePassword()"
+      >
         @if (showPassword()) {
           <i class="ri-eye-off-line"></i>
         } @else {
           <i class="ri-eye-line"></i>
         }
-
       </button>
-
     }
-
   }
-
 </div>

@@ -1,0 +1,15 @@
+<svg
+  viewBox="0 0 600 400"
+  preserveAspectRatio="xMidYMid slice"
+  [style.transform]="'translate(' + x() + 'px,' + y() + 'px) scale(1.15)'"
+>
+  @for (ring of rings; track ring) {
+    <ellipse
+      cx="360"
+      cy="210"
+      [attr.rx]="45 + ring * 22"
+      [attr.ry]="20 + ring * 13"
+      [attr.transform]="'rotate(-28 360 210)'"
+    />
+  }
+</svg>
